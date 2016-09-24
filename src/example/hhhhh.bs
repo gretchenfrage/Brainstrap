@@ -1,0 +1,22 @@
+macro copy(a, b) {
+	declare c;
+	while a {
+		a--;
+		b++;
+		c++;
+	}
+	while (c) {
+		c--;
+		a++;
+	}
+	delete c;
+}
+
+declare a, b, c;
+a += 20;
+copy(a, b);
+b += 'h';
+while (a) {
+	a--;
+	output b;
+}
