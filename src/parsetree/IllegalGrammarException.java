@@ -13,7 +13,5 @@ public class IllegalGrammarException extends Exception {
 	public IllegalGrammarException(Throwable reason) {
 		super(reason);
 	}
-	
-	
 
 }

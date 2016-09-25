@@ -2,38 +2,20 @@ package parsetree;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Stack;
 
-import lexer.Token;
+import lexer.TokenType;
 
-public class TopLevelNode implements Node {
+public class TopLevelNode extends Node {
 
-	private List<Node> subNodes = new ArrayList<Node>();
+	private List<Node> contents = new ArrayList<Node>();
 	
-	public TopLevelNode(Stack<Token> tokens) throws IllegalGrammarException {
-		List<NodeFactory> nodeFactories = makeNodeFactories();
-		while (!tokens.isEmpty()) {
-			Optional<Node> node = makeNode(tokens, nodeFactories);
-			if (node.isPresent())
-				subNodes.add(node.get());
-			else
-				throw new IllegalGrammarException();
+	public TopLevelNode(TokenReader reader) {
+		super(NodeType.TOP_LEVEL);
+		while (!reader.done()) {
+			if (reader.peek().is(TokenType.MACRO)) {
+				
+			}
 		}
-	}
-	
-	private Optional<Node> makeNode(Stack<Token> tokens, List<NodeFactory> nodeFactories) throws IllegalGrammarException {
-		for (NodeFactory factory : nodeFactories) {
-			if (factory.started(tokens))
-				return Optional.of(factory.make(tokens));
-		}
-		return Optional.empty();
-	}
-	
-	private static List<NodeFactory> makeNodeFactories() {
-		List<NodeFactory> out = new ArrayList<NodeFactory>();
-		
-		return out;
 	}
 	
 }

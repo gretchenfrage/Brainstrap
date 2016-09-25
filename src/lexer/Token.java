@@ -10,11 +10,15 @@ public class Token {
 		this.contents = contents;
 	}
 	
-	public TokenType getType() {
+	public TokenType type() {
 		return type;
 	}
 	
-	public String getContents() {
+	public boolean is(TokenType type) {
+		return this.type == type;
+	}
+	
+	public String contents() {
 		return contents;
 	}
 	
