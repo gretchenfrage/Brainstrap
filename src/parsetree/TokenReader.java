@@ -51,7 +51,7 @@ public class TokenReader {
 		return out;
 	}
 	
-	public boolean done() {
+	public boolean hasNext() {
 		return index < tokens.size();
 	}
 	
